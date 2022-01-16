@@ -1,0 +1,334 @@
+$logoColor: #3cc3b5;
+@import 'cart.scss';
+
+@mixin text{
+    text-transform: uppercase;
+    color: #afafaf;
+    font-size: 18px;
+}
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Bebas Neue', cursive;
+
+}
+
+.top-nav ul{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+   
+}
+.logo{
+    font-family: 'Lobster', cursive;
+    color: $logoColor;
+    font-size: 3rem;
+    margin: 0;
+}
+form input{
+    width: 440px;
+    height: 40px;
+    margin: 25px 0 0 0;
+    border: 2px solid #e1e1e1;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+
+    ::placeholder{
+        color: #e1e1e1;;
+    }
+}
+.cart{
+    width: 110px;
+    display: flex;
+    justify-content: space-around;
+}
+.cart i{
+    height: 25px;
+    width: 25px;
+    font-size: 35px;
+    color: $logoColor;
+}
+.nav-down ul{
+    display: flex;
+    list-style: none;
+    background: $logoColor;
+    height: 10vh;
+   
+}
+.nav-down ul li{
+    display: inline-block;
+    padding: 5px 25px;
+    text-transform: uppercase;
+    color: #fff;
+    font-size: 18px;
+    border-right: 2px solid #fff;
+    &:hover{
+        cursor: pointer;
+        opacity: .7;
+        border-bottom: 2px solid #fff;
+    }
+}
+.slider-section{
+    height: 70vh;
+    background: $logoColor;
+}
+.down-slider{
+    margin: 20px 0 0 0;
+    display: flex;
+    justify-content: center;
+}
+.product-item{
+    display: flex;
+    margin: 0 100px 0 0;
+    padding: 0 30px 0 0;
+    border-right: 1px solid #333 ;
+    img{
+        width: auto;
+        height: auto;
+    }
+}
+.image-block img{
+    margin: 1% 0 0 0;
+}
+.product-descr{
+    margin: 0 0 0 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    
+    h4 {
+        font-size: 27px;
+        text-transform: uppercase;
+        color: #afafaf;
+        margin: 0;
+        font-weight: 400;
+    }
+}
+    .shop{
+        background: $logoColor;
+        color: #fff;
+        text-transform: uppercase;
+        outline: none;
+        border: none;
+        padding: 10px;
+        border-radius: 5px;
+        transition: .6s ease;
+        -webkit-transition: .6s ease;
+        -moz-transition: .6s ease;
+        -ms-transition: .6s ease;
+        -o-transition: .6s ease;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+        &:hover{
+            cursor: pointer;
+            color: $logoColor;
+            background: #fff;        
+        }
+}
+
+.featured-product{
+    height: 10vh;
+    background: $logoColor;
+    text-align: left;
+    padding: 10px 10px;
+
+    h2{
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 500;
+        margin: 0 0 0 10%;
+    }
+}
+.main-wrapper{
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
+}
+.main-product{
+    border: 1px solid #e4e4e4;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 255px;
+    height: 255px;
+    margin: 10px 10px;
+    transition: .6s ease;
+        -webkit-transition: .6s ease;
+        -moz-transition: .6s ease;
+        -ms-transition: .6s ease;
+        -o-transition: .6s ease;
+    &:hover{
+        border-bottom: 3px solid $logoColor;
+        cursor: pointer;
+    }
+}
+.image-cell{
+    max-height: 120px;
+    img{
+        width: auto;
+        height: auto;
+    }
+}
+.text-cell h4{
+    @include text;
+
+}
+.price{
+    display: flex;
+    justify-content: space-evenly;
+    p{
+        @include text;
+    }
+}
+footer{
+    display: flex;
+    justify-content: center;
+    background: $logoColor;
+    color: #fff;
+    padding: 20px 20px;
+    h4{
+        text-transform: uppercase;
+
+    }
+    ul{
+        margin: 0 2%;
+       
+        list-style: none;
+    }
+
+}
+.copyright{
+    height: 50px;
+    width: 100%;
+    background: #2da89b;
+    text-align: center;
+    p{
+        margin: 0;
+        padding: 10px 0;
+        color: #fff;
+    }
+}
+//slider styler 
+
+* {
+    box-sizing: border-box
+}
+body {
+    font-family: Verdana, sans-serif;
+     margin:0
+    }
+/* .mySlides {
+    display: none
+} */
+.image-block{
+    text-align: center;
+}
+
+
+.mySlides{
+    width: 80%;
+    display: flex;
+  
+}
+
+
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    margin: auto;
+}
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  text-align: center;
+}
+
+/* Number text (1/3 etc) */
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+.dots{
+    position: absolute;
+    bottom: -35px;
+}
+/* The dots/bullets/indicators */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #09766b;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #98e3db;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4} 
+  to {opacity: 1}
+}
+
+/* On smaller screens, decrease text size */
+@media only screen and (max-width: 300px) {
+  .prev, .next,.text {font-size: 11px}
+}

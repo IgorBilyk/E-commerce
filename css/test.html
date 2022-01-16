@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const numbers = [1,2,5,4,9,6,3,8,7];
+        const numbers2 = [];
+        let odd = [];
+        let even = [];
+        for(let i = 0; i < numbers.length; i++){
+            if(numbers[i] % 2 === 0){
+                odd.push(numbers[i]);
+                /* numbers.splice(i,1); */
+            }else{
+                even.push(numbers[i]);
+                /* numbers.splice(i,1); */
+            }
+
+        }
+        console.log(odd.sort());
+        console.log(even.sort());
+        
+        for(let i = 0; i< even.length; i++){
+                numbers2.push(even[i] , odd[i])
+            
+            
+        }
+        console.log(numbers2);
+    </script>
+</body>
+</html>

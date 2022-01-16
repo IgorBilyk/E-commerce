@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-Commerce</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link rel="shortcut icon" type="image/png" href="img/favicon_io/favicon.ico"/>
+<!--     <link rel="stylesheet" href="../assets/library/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="../assets/library/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">   -->
+</head>
+<body>
+    <header>
+        <nav class="top-nav">
+            <ul>
+                <p class="logo">Adiliti</p>
+                <form action="#">
+                    <input type="text" placeholder="&#xF002;" style="font-family:Arial, FontAwesome" />
+                </form>
+                <div class="cart"><a href="#" id="cart"><i class="fas fa-cart-arrow-down"></i></a><span id="cartPrice"></span></div>
+            </ul>
+        </nav>
+        <nav class="nav-down">
+            <ul>
+                <li>Home</li>
+                <li>Sale</li>
+                <li>Handbags</li>
+                <li>Wallets</li>
+                <li>Acessories</li>
+                <li>Mens Store</li>
+                <li>Shoes</li>
+                <li>Vintage</li>
+                <li>Services</li>
+                <li>Contact Us</li>
+            </ul>
+
+        </nav>
+        <div class="cartBlock">
+          <div class="container">
+            <span id="crossContainer">&#9932;</span>
+            <div class="cartItem">
+              <img src=".//img/pants.png" alt="img">
+              <div class="cartItemDescription">
+                <p>Pants</p>
+                <p>Last Colection</p>
+                <p>price: 100$</p>
+                <select name="quntity" id="quntity">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>                  
+                </select>
+                <span id="cross">Delete</span>
+              </div>
+            </div>
+            <div class="cartItem">
+              <img src=".//img/Tshirt.png" alt="img">
+              <div class="cartItemDescription">
+                <p>Pants</p>
+                <p>Last Colection</p>
+                <p>price: 100$</p>
+                <select name="quntity" id="quntity">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>                  
+                </select>
+                <span id="cross">Delete</span>
+              </div> 
+            </div>
+            <div class="cartItem">
+              <img src=".//img/wallet2.png" alt="img">
+              <div class="cartItemDescription">
+                <p>Pants</p>
+                <p>Last Colection</p>
+                <p>price: 100$</p>
+                <select name="quntity" id="quntity">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>                  
+                </select>
+                <span id="cross">Delete</span>
+              </div>
+            </div>
+            <span id="total"></span>
+          </div>
+        </div>
+    </header>
+    <main>
+        <section class="slider-section">
+            <div class="slideshow-container">
+
+                <div class="mySlides fade">
+                  <div class="image-block">
+                    <img src="img/T-shirt.png" style="width:21%">
+                  </div>
+                  <div class="text">
+                    <h3>Cowhide</h3>
+                    <h3>Standart crew</h3>
+                    <p>White coloured, short-sleeved, printed T-shirt for men by Levi's. This crew-neck T-shirt is made of organic cotton and comes in a regular fit. </p>
+                    <button class="shop">Shop Now</button>
+                  </div>
+                </div>
+                <div class="mySlides fade">
+                  <div class="image-block">
+                    <img src="img/T-shirt.png" style="width:21%">
+                  </div>
+                  <div class="text">
+                    <h3>Fashin Bags</h3>
+                    <h3>Standart Ones</h3>
+                    <p>White coloured, short-sleeved, printed T-shirt for men by Levi's. This crew-neck T-shirt is made of organic cotton and comes in a regular fit. </p>
+                    <button class="shop">Shop Now</button>
+                  </div>
+                </div>
+                <div class="mySlides fade">
+                  <div class="image-block">
+                    <img src="img/T-shirt.png" style="width:21%">
+                  </div>
+                  <div class="text">
+                    <h3>New T-Shirts</h3>
+                    <h3>Levis</h3>
+                    <p>White coloured, short-sleeved, printed T-shirt for men by Levi's. This crew-neck T-shirt is made of organic cotton and comes in a regular fit. </p>
+                    <button class="shop">Shop Now</button>
+                  </div>
+                </div>
+    
+                <div class="dots" style="text-align:center">
+                    <span class="dot" onclick="currentSlide(1)"></span> 
+                    <span class="dot" onclick="currentSlide(2)"></span> 
+                    <span class="dot" onclick="currentSlide(3)"></span> 
+                  </div>
+                </div>
+                <br>
+        
+        </section>
+        <section class="down-slider">
+          <div class="product-item">
+            <img src="img/Layer 13.png" alt="img">
+            <div class="product-descr">
+              <h4>Branded <br> Shoes</h4>
+              <button class="shop">Shop</button>
+            </div>
+          </div>
+          <div class="product-item">  
+            <img src="img/Tshirt.png" alt="img">
+            <div class="product-descr">
+              <h4>Branded <br> Shoes</h4>
+              <button class="shop">Shop</button>
+            </div>
+          </div>
+          <div class="product-item">
+            <img src="img/pants.png" alt="img">
+            <div class="product-descr">
+              <h4>Branded <br> Shoes</h4>
+              <button class="shop">Shop</button>
+            </div>
+          </div>
+        </section>
+        <div class="featured-product">
+          <h2>Featured Products</h2>
+        </div>
+        <section>
+          <div class="main-wrapper">
+            <div class="main-product">
+              <div class="image-cell">
+                <img src="img/shoesWoman.png" alt="">
+              </div>
+              <div class="text-cell">
+                <h4>Branded shoes</h4>
+                <div class="price">
+                  <p>$300</p>
+                  <button class="shop" data-price='300'data-id='1' id="shoes">Buy Now</button>
+                </div>
+              </div>
+            </div>
+            <div class="main-product">
+              <div class="image-cell">
+                <img src="img/T-shirt3.png" alt="">
+              </div>
+              <div class="text-cell">
+                <h4>Branded Tees</h4>
+                <div class="price">
+                  <p>$230</p>
+                  <button class="shop" data-price='230' data-id='2'>Buy Now</button>
+                </div>
+              </div>
+            </div>
+            <div class="main-product">
+              <div class="image-cell">
+                <img src="img/T-shirt2.png" alt="">
+              </div>
+              <div class="text-cell">
+                <h4>Branded T-shirts</h4>
+                <div class="price">
+                  <p>$150</p>
+                  <button class="shop" data-price='150' data-id='3'>Buy Now</button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="main-wrapper ">
+            <div class="main-product">
+              <div class="image-cell">
+                <img src="img/pants.png" alt="">
+              </div>
+              <div class="text-cell">
+                <h4>Branded Pants</h4>
+                <div class="price">
+                  <p>$150</p>
+                  <button class="shop" data-price='150' data-id='4'>Buy Now</button>
+                </div>
+              </div>
+            </div>
+            <div class="main-product">
+              <div class="image-cell">
+                <img src="img/wallet.png" alt="">
+              </div>
+              <div class="text-cell">
+                <h4>Branded Wallet</h4>
+                <div class="price">
+                  <p>$150</p>
+                  <button class="shop" data-price='150' data-id='5'>Buy Now</button>
+                </div>
+              </div>
+            </div>
+            <div class="main-product">
+              <div class="image-cell">
+                <img src="img/wallet2.png" alt="">
+              </div>
+              <div class="text-cell">
+                <h4>Branded Bags</h4>
+                <div class="price">
+                  <p>$150</p>
+                  <button class="shop" data-price='150' data-id='6'>Buy Now</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+        <footer>
+          <ul>
+            <h4>Featured Sale</h4>
+            <li>Alexis Hudson</li>
+            <li>American Apparel</li>
+            <li>Ben Sherman</li>
+            <li>Big Buddha</li>
+            <li>Chanel</li>
+            <li>Christian Audigier</li>
+            <li>Coach</li>
+            <li>Cole Haan</li>
+          </ul>
+          <ul>
+            <h4>Mens store</h4>
+            <li>Alexis Hudson</li>
+            <li>American Apparel</li>
+            <li>Ben Sherman</li>
+            <li>Big Buddha</li>
+            <li>Chanel</li>
+            <li>Christian Audigier</li>
+            <li>Coach</li>
+            <li>Cole Haan</li>
+          </ul>
+          <ul>
+            <h4>Women store</h4>
+            <li>Alexis Hudson</li>
+            <li>American Apparel</li>
+            <li>Ben Sherman</li>
+            <li>Big Buddha</li>
+            <li>Chanel</li>
+            <li>Christian Audigier</li>
+            <li>Coach</li>
+            <li>Cole Haan</li>
+          </ul>
+          <ul>
+            <h4>Quick links</h4>
+            <li>Alexis Hudson</li>
+            <li>American Apparel</li>
+            <li>Ben Sherman</li>
+            <li>Big Buddha</li>
+            <li>Chanel</li>
+            <li>Christian Audigier</li>
+            <li>Coach</li>
+            <li>Cole Haan</li>
+          </ul>
+        </footer>
+        <div class="copyright">
+          <p>Copyright &copy; 2020 Css Author</p>
+        </div>
+    </main>
+    <!-- <div class="confirmContainer">
+      <p>Are you sure ?</p>
+      <p>Do you want to remove this item from cart ?</p>
+      <button>No</button>
+      <button>Yes</button>
+
+    </div> -->
+
+
+
+    <script>
+        var slideIndex = 1;
+        showSlides(slideIndex);
+        
+        function plusSlides(n) {
+          showSlides(slideIndex += n);
+        }
+        
+        function currentSlide(n) {
+          showSlides(slideIndex = n);
+        }
+        
+        function showSlides(n) {
+          var i;
+          var slides = document.getElementsByClassName("mySlides");
+          var dots = document.getElementsByClassName("dot");
+          if (n > slides.length) {slideIndex = 1}    
+          if (n < 1) {slideIndex = slides.length}
+          for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";  
+          }
+          for (i = 0; i < dots.length; i++) {
+              dots[i].className = dots[i].className.replace(" active", "");
+          }
+          slides[slideIndex-1].style.display = "block";  
+          dots[slideIndex-1].className += " active";
+        }
+
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous" defer></script>
+        <script src="script/script.js"></script>
+        <!--  <script src="../assets/library/OwlCarousel2-2.3.4/dist/owl.carousel.min.js" defer></script> -->
+       <!--  <script>
+        jQuery(document).ready(function(){
+          jQuery(".owl-carousel").owlCarousel();
+});
+        </script> -->
+</body>
+</html>
