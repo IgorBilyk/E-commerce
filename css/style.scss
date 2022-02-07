@@ -1,4 +1,5 @@
 $logoColor: #3cc3b5;
+$cartColor: #09766b;
 @import 'cart.scss';
 
 @mixin text{
@@ -48,14 +49,20 @@ form input{
     display: flex;
     justify-content: space-around;
 }
+#cartPrice{
+    color: $cartColor;
+    
+}
 .cart i{
-    height: 25px;
-    width: 25px;
     font-size: 35px;
     color: $logoColor;
 }
+.nav-down{
+    width: 100%;
+}
 .nav-down ul{
     display: flex;
+    justify-content: center;
     list-style: none;
     background: $logoColor;
     height: 10vh;
@@ -82,16 +89,44 @@ form input{
     margin: 20px 0 0 0;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 .product-item{
     display: flex;
+    width: 100%;
     margin: 0 100px 0 0;
     padding: 0 30px 0 0;
     border-right: 1px solid #333 ;
+    div{
+        width: 200px;
+        height: 200px;
+        background-repeat:no-repeat;
+        background-position: center center;
+    }
+    div:nth-of-type(){
+        width: 200px;
+        background-image: url('../img/pants.png');
+        background-repeat:no-repeat;
+        background-position: center center;
+    }
     img{
         width: auto;
         height: auto;
     }
+}
+
+
+.product-item-image-1{
+    background-image: url('../img/Layer\ 13.png');
+
+}
+.product-item-image-2{
+    background-image: url('../img/pants.png');
+
+}
+.product-item-image-3{
+    background-image: url('../img/shoesWoman.png');
+
 }
 .image-block img{
     margin: 1% 0 0 0;
@@ -329,6 +364,70 @@ img {vertical-align: middle;}
 }
 
 /* On smaller screens, decrease text size */
+@media only screen and (max-width: 600px) {
+    nav ul form {
+        width: 100%;
+        input{
+            width: 100%;
+        }
+    }
+    .nav-down{
+        display: none;
+    }
+    .down-slider{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    .product-item{
+        display: flex;
+        margin: 0;
+        padding:0;
+        border-right: 1px solid #333 ;
+    }
+        .top-nav ul{
+            flex-direction: column;
+            width: 100%;
+        }
+        .main-wrapper{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .main-product{
+            width: 100%;
+        }
+        .cart{
+            i{
+            position: fixed;
+            top: 1rem;
+            right: 1rem;
+            z-index: 999;
+            color: $cartColor;
+            }
+            span{
+                position: fixed;
+                top: 1.5rem;
+                right: 4rem;
+                color: $cartColor;
+
+            }
+        }
+        footer{
+            flex-direction: column;
+            width: 100%;
+            ul{
+                width: 100%;
+                text-align: center;
+                margin: 0;
+                li{
+                    text-align: center;
+                }
+            }
+        }
+  }
+  
 @media only screen and (max-width: 300px) {
   .prev, .next,.text {font-size: 11px}
 }
