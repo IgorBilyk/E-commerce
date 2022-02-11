@@ -1,212 +1,292 @@
-let cart = document.querySelector("#cart");
-let cross = document.querySelectorAll("#cross");
-let crossContainer = document.querySelector("#crossContainer");
-let cartItemText = document.querySelector(".cartItemText");
-let shoes = document.querySelector("#shoes");
-let cartBlock = document.querySelector(".cartBlock");
-let cartBlockContainer = document.querySelector(".container");
-let buttonShop = document.querySelectorAll(".shop");
-let total = document.querySelector("#total");
+// ************************************************
+// Shopping Cart API
+// ************************************************
 
-let itemCartTemplate = document.querySelector("[data-item-card]");
-let itemCartContainer = document.querySelector("[data-items-container]");
+var shoppingCart = (function () {
+  // =============================
+  // Private methods and propeties
+  // =============================
+  cart = [];
 
-let card = itemCartTemplate.content.cloneNode(true).children[0];
-
-let header = card.querySelector("[data-header]");
-let headerParagraph = card.querySelector("[data-header-paragraph]");
-let footer = card.querySelector("[data-footer]");
-
-const addItemToCart = (result) => {
-  console.log(itemCartContainer);
-  result.forEach((item) => {
-    let itemCartTemplate = document.querySelector("[data-item-card]");
-    let itemCartContainer = document.querySelector("[data-items-container]");
-
-    let card = itemCartTemplate.content.cloneNode(true).children[0];
-
-    let header = card.querySelector("[data-header]");
-    let headerParagraph = card.querySelector("[data-header-paragraph]");
-    let footer = card.querySelector("[data-footer]");
-    header.textContent = item.name;
-    footer.textContent = item.price;
-    headerParagraph.innerHTML = "paragraph";
-    header.appendChild(headerParagraph);
-    itemCartContainer.appendChild(card);
-  });
-};
-
-let div = document.createElement("div");
-
-let totalCart = 0;
-let cartArray = [];
-let result = [];
-let priceArray = [];
-
-//Set attributes function
-const setAttributes = (el, attrs) => {
-  for (var key in attrs) {
-    el.setAttribute(key, attrs[key]);
+  // Constructor
+  function Item(name, price, count) {
+    this.name = name;
+    this.price = price;
+    this.count = count;
   }
-};
-//Handele cart icon click
-cart.addEventListener("click", () => {
-  cartBlock.classList.remove("cartBlock");
-  cartBlock.classList.toggle("activeCart");
-  /* cartBlockContainer.appendChild(span); */
-  //Calculatin the sum of cart items
-  const totalPrice = result
-    .map((item) => item.price)
-    .reduce((a, b) => parseInt(a) + parseInt(b), 0);
-  /*  span.innerHTML = `Total: ${totalPrice}`; */
-});
 
-const renderCartItem = (result) => {
-  let { id, name, price } = result;
-  /* let div = document.createElement("div");
-  let inputsDiv = document.createElement("div");
-
-  let nameParagrahp = document.createElement("p");
-  let priceParagraph = document.createElement("p");
-  let input = document.createElement("input");
-  let button = document.createElement("button");
-  let img = document.createElement("img");
-  let span = document.createElement("span");
-
-  setAttributes(button, { class: "delete-button" });
-  div.setAttribute("class", "cart-item");
-  input.setAttribute("value", "1");
-
-  button.innerText = "Remove";
-
-  div.appendChild(nameParagrahp);
-  div.appendChild(priceParagraph);
-  div.appendChild(img);
-  div.appendChild(inputsDiv);
-  inputsDiv.appendChild(input);
-  inputsDiv.appendChild(button); */
-
-  /* for (let i = 0; i < result.length; i++) {
-    nameParagrahp.innerHTML = result[i].name;
-    priceParagraph.innerHTML = `Price: ${result[i].price}$`;
-    img.setAttribute("src", result[i].img);
-    cartBlockContainer.appendChild(div);
-  } */
-
-  addItemToCart(result);
-
-  /*  div.appendChild(nameParagrahp);
-  let priceParagraph = document.createElement("p");
-
-  cartBlockContainer.appendChild(div);
-
-  renderCartItem(result); */
-};
-//Remove individual item in the cart
-document.addEventListener("click", (e) => {
-  if (e.target.getAttribute("class") == "delete-button") {
-    e.target.parentElement.parentElement.remove();
+  // Save cart
+  function saveCart() {
+    sessionStorage.setItem("shoppingCart", JSON.stringify(cart));
   }
-});
-const updateCart = () => {
-  div.remove();
-};
-//Function to remove item from cart
-cross.forEach((item) => {
-  item.addEventListener("click", (event) => {
-    /* console.log("Click"); */
-    event.target.parentElement.parentElement.remove();
-    /* if (cartArray.length === 0) {
-      closeCart();
-    } */
-    console.log(cartArray);
-    /* cartBlock.classList.toggle("activeCart"); */
-  });
-});
-/* shoes.addEventListener("click", () => {
-  console.log("shoes");
-  for (let i = 0; i < cartArray.length; i++) {
-  
+
+  // Load cart
+  function loadCart() {
+    cart = JSON.parse(sessionStorage.getItem("shoppingCart"));
   }
-}); */
-document.addEventListener("click", (e) => {
-  /* console.log(e); */
-});
-let con = document.querySelector(".container");
+  if (sessionStorage.getItem("shoppingCart") != null) {
+    loadCart();
+  }
 
-//close cart block
-crossContainer.addEventListener("click", () => {
-  closeCart();
-  updateCart();
-});
+  // =============================
+  // Public methods and propeties
+  // =============================
+  var obj = {};
 
-buttonShop.forEach((item) => {
-  item.addEventListener("click", (e) => {
-    let obj = JSON.parse(e.target.getAttribute("data-product"));
-    let { id, name, price, img } = obj;
-
-    let ids = result.map((item) => parseInt(item.id));
-    console.log(ids.includes(parseInt(id)));
-    if (result.length > 0 && ids.includes(parseInt(id))) {
-      return false;
-    } else {
-      result.push(obj);
+  // Add to cart
+  obj.addItemToCart = function (name, price, count) {
+    for (var item in cart) {
+      if (cart[item].name === name) {
+        cart[item].count++;
+        saveCart();
+        return;
+      }
     }
-    renderCartItem(result);
-    /*  for (let i = 0; i < result.length; i++) {
-      
-      renderCartItem(result);
-    } */
-    // renderCartItem(result);
-    /*   console.log(
-      e.target.getAttribute("data-price"),
-      e.target.getAttribute("data-id"),
-      name
-    );
- */
-    updateCart(e);
-  });
+    var item = new Item(name, price, count);
+    cart.push(item);
+    saveCart();
+  };
+  // Set count from item
+  obj.setCountForItem = function (name, count) {
+    for (var i in cart) {
+      if (cart[i].name === name) {
+        cart[i].count = count;
+        break;
+      }
+    }
+  };
+  // Remove item from cart
+  obj.removeItemFromCart = function (name) {
+    for (var item in cart) {
+      if (cart[item].name === name) {
+        cart[item].count--;
+        if (cart[item].count === 0) {
+          cart.splice(item, 1);
+        }
+        break;
+      }
+    }
+    saveCart();
+  };
+
+  // Remove all items from cart
+  obj.removeItemFromCartAll = function (name) {
+    for (var item in cart) {
+      if (cart[item].name === name) {
+        cart.splice(item, 1);
+        break;
+      }
+    }
+    saveCart();
+  };
+
+  // Clear cart
+  obj.clearCart = function () {
+    cart = [];
+    saveCart();
+  };
+
+  // Count cart
+  obj.totalCount = function () {
+    var totalCount = 0;
+    for (var item in cart) {
+      totalCount += cart[item].count;
+    }
+    return totalCount;
+  };
+
+  // Total cart
+  obj.totalCart = function () {
+    var totalCart = 0;
+    for (var item in cart) {
+      totalCart += cart[item].price * cart[item].count;
+    }
+    return Number(totalCart.toFixed(2));
+  };
+
+  // List cart
+  obj.listCart = function () {
+    var cartCopy = [];
+    for (i in cart) {
+      item = cart[i];
+      itemCopy = {};
+      for (p in item) {
+        itemCopy[p] = item[p];
+      }
+      itemCopy.total = Number(item.price * item.count).toFixed(2);
+      cartCopy.push(itemCopy);
+    }
+    return cartCopy;
+  };
+
+  // cart : Array
+  // Item : Object/Class
+  // addItemToCart : Function
+  // removeItemFromCart : Function
+  // removeItemFromCartAll : Function
+  // clearCart : Function
+  // countCart : Function
+  // totalCart : Function
+  // listCart : Function
+  // saveCart : Function
+  // loadCart : Function
+  return obj;
+})();
+
+// *****************************************
+// Triggers / Events
+// *****************************************
+// Add item
+$(".add-to-cart").click(function (event) {
+  event.preventDefault();
+  var name = $(this).data("name");
+  var price = Number($(this).data("price"));
+  shoppingCart.addItemToCart(name, price, 1);
+  displayCart();
 });
-const closeCart = () => {
-  cartBlock.classList.remove("activeCart");
-  cartBlock.classList.add("cartBlock");
-};
-/* updateCart = (event) => {
-  let target = event.target;
 
-  switch (parseInt(target.getAttribute("data-id"))) {
-    case 1:
-      cartArray[0] = 1;
-      break;
-    case 2:
-      cartArray[1] = 1;
-      break;
-    case 3:
-      cartArray[2] = 1;
-      break;
-    case 4:
-      cartArray[3] = 1;
-      break;
-    case 5:
-      cartArray[4] = 1;
-      break;
-    case 6:
-      cartArray[5] = 1;
-      break;
-    case 7:
-      cartArray[6] = 1;
-      break;
-    case 8:
-      cartArray[7] = 1;
-      break;
-    case 9:
-      cartArray[8] = 1;
-      break;
+// Clear items
+$(".clear-cart").click(function () {
+  shoppingCart.clearCart();
+  displayCart();
+});
+
+function displayCart() {
+  var cartArray = shoppingCart.listCart();
+  var output = "";
+  for (var i in cartArray) {
+    output +=
+      "<tr>" +
+      "<td>" +
+      cartArray[i].name +
+      "</td>" +
+      "<td>(" +
+      cartArray[i].price +
+      ")</td>" +
+      "<td><div class='input-group'><button class='minus-item input-group-addon btn btn-primary' data-name=" +
+      cartArray[i].name +
+      ">-</button>" +
+      "<input type='number' class='item-count form-control' data-name='" +
+      cartArray[i].name +
+      "' value='" +
+      cartArray[i].count +
+      "'>" +
+      "<button class='plus-item btn btn-primary input-group-addon' data-name=" +
+      cartArray[i].name +
+      ">+</button></div></td>" +
+      "<td><button class='delete-item btn btn-danger' data-name=" +
+      cartArray[i].name +
+      ">X</button></td>" +
+      " = " +
+      "<td>" +
+      cartArray[i].total +
+      "</td>" +
+      "</tr>";
   }
-  let cartArrayNew = cartArray.filter((item) => {
-    return item !== "undefined";
-  });
-  totalCart++;
+  $(".show-cart").html(output);
+  $(".total-cart").html(shoppingCart.totalCart());
+  $(".total-count").html(shoppingCart.totalCount());
+}
 
-  document.querySelector("#cartPrice").innerHTML = cartArrayNew.length;
-}; */
+// Delete item button
+
+$(".show-cart").on("click", ".delete-item", function (event) {
+  var name = $(this).data("name");
+  shoppingCart.removeItemFromCartAll(name);
+  displayCart();
+});
+
+// -1
+$(".show-cart").on("click", ".minus-item", function (event) {
+  var name = $(this).data("name");
+  shoppingCart.removeItemFromCart(name);
+  displayCart();
+});
+// +1
+$(".show-cart").on("click", ".plus-item", function (event) {
+  var name = $(this).data("name");
+  shoppingCart.addItemToCart(name);
+  displayCart();
+});
+
+// Item count input
+$(".show-cart").on("change", ".item-count", function (event) {
+  var name = $(this).data("name");
+  var count = Number($(this).val());
+  shoppingCart.setCountForItem(name, count);
+  displayCart();
+});
+
+displayCart();
+//Carousel
+const text1_options = ["Orange", "Banana", "Kiwi", "Apple"];
+const text2_options = [
+  "The best price only today",
+  "The best price only today",
+  "The best price only today",
+  "The best price only today",
+];
+const color_options = ["#fff", "#fff", "#fff", "#fff"];
+const image_options = [
+  "./img/pexel/png/orange.png",
+  "../img/pexel/png/banana.png",
+  "../img/pexel/png/kiwi.png",
+  "../img/pexel/png/apple.png",
+];
+var i = 0;
+const currentOptionText1 = document.getElementById("current-option-text1");
+const currentOptionText2 = document.getElementById("current-option-text2");
+const currentOptionImage = document.getElementById("image");
+const carousel = document.getElementById("carousel-wrapper");
+const mainMenu = document.getElementById("menu");
+const optionPrevious = document.getElementById("previous-option");
+const optionNext = document.getElementById("next-option");
+
+currentOptionText1.innerText = text1_options[i];
+currentOptionText2.innerText = text2_options[i];
+currentOptionImage.style.backgroundImage = "url(" + image_options[i] + ")";
+mainMenu.style.background = color_options[i];
+
+optionNext.onclick = function () {
+  i = i + 1;
+  i = i % text1_options.length;
+  currentOptionText1.dataset.nextText = text1_options[i];
+
+  currentOptionText2.dataset.nextText = text2_options[i];
+
+  mainMenu.style.background = color_options[i];
+  carousel.classList.add("anim-next");
+
+  setTimeout(() => {
+    currentOptionImage.style.backgroundImage = "url(" + image_options[i] + ")";
+  }, 455);
+
+  setTimeout(() => {
+    currentOptionText1.innerText = text1_options[i];
+    currentOptionText2.innerText = text2_options[i];
+    carousel.classList.remove("anim-next");
+  }, 650);
+};
+
+optionPrevious.onclick = function () {
+  if (i === 0) {
+    i = text1_options.length;
+  }
+  i = i - 1;
+  currentOptionText1.dataset.previousText = text1_options[i];
+
+  currentOptionText2.dataset.previousText = text2_options[i];
+
+  mainMenu.style.background = color_options[i];
+  carousel.classList.add("anim-previous");
+
+  setTimeout(() => {
+    currentOptionImage.style.backgroundImage = "url(" + image_options[i] + ")";
+  }, 455);
+
+  setTimeout(() => {
+    currentOptionText1.innerText = text1_options[i];
+    currentOptionText2.innerText = text2_options[i];
+    carousel.classList.remove("anim-previous");
+  }, 650);
+};
